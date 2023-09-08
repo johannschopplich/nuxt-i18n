@@ -1,4 +1,4 @@
-![Nuxt i18n module](./.github/og.png)
+![Nuxt i18n module](./.github/og.jpg)
 
 # @byjohann/nuxt-i18n
 
