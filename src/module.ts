@@ -194,17 +194,15 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Add i18n composables
     addImports([
-      ...[
-        'useI18n',
-        'useLazyLocaleSwitch',
-        'useLocalizedPath',
-        'useRouteLocale',
-      ].map(name => ({
-        name,
-        as: name,
-        from: resolve('runtime/composables'),
-      })),
-    ])
+      'useI18n',
+      'useLazyLocaleSwitch',
+      'useLocalizedPath',
+      'useRouteLocale',
+    ].map(name => ({
+      name,
+      as: name,
+      from: resolve(`runtime/composables/${name}`),
+    })))
 
     // Load options template
     addTemplate({
