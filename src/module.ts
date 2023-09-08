@@ -1,7 +1,7 @@
 import { resolve as pathResolve } from 'pathe'
 import { genDynamicImport, genImport, genSafeVariableName } from 'knitwork'
 import { addImports, addPluginTemplate, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
-import type { LocaleMessages } from '@leanera/vue-i18n'
+import type { LocaleMessages } from '@byjohann/vue-i18n'
 import { DEFAULT_LOCALE, DEFAULT_LOCALE_ROUTE_NAME_SUFFIX, DEFAULT_ROUTES_NAME_SEPARATOR } from './constants'
 import { resolveLocales } from './locales'
 import { setupPages } from './pages'
@@ -132,7 +132,7 @@ export interface ModuleOptions {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: '@leanera/nuxt-i18n',
+    name: '@byjohann/nuxt-i18n',
     configKey: 'i18n',
     compatibility: {
       nuxt: '^3',

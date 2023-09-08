@@ -1,7 +1,7 @@
 import { useLogger } from '@nuxt/kit'
 import type { Strategies } from './types'
 
-export const logger = useLogger('@leanera/nuxt-i18n')
+export const logger = useLogger('@byjohann/nuxt-i18n')
 
 export function adjustRoutePathForTrailingSlash(
   pagePath: string,

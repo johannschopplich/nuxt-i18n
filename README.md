@@ -1,8 +1,8 @@
 ![Nuxt i18n module](./.github/og.png)
 
-# @leanera/nuxt-i18n
+# @byjohann/nuxt-i18n
 
-[![npm version](https://img.shields.io/npm/v/@leanera/nuxt-i18n?color=a1b858&label=)](https://www.npmjs.com/package/@leanera/nuxt-i18n)
+[![npm version](https://img.shields.io/npm/v/@byjohann/nuxt-i18n?color=a1b858&label=)](https://www.npmjs.com/package/@byjohann/nuxt-i18n)
 
 > [Nuxt 3](https://nuxt.com) module for internationalization with locale auto-imports & localized routing.
 
@@ -10,7 +10,7 @@ This module's intention is not to provide a full-blown solution for internationa
 
 ## Key Features
 
-- 🪡 Integration with [@leanera/vue-i18n](https://github.com/leanera/vue-i18n)
+- 🪡 Integration with [@byjohann/vue-i18n](https://github.com/byjohann/vue-i18n)
 - 🗜 Composable usage with [`useI18n`](#usei18n)
 - 🪢 [Auto-importable](#auto-importing--lazy-loading-translations) locale messages (JSON/YAML support)
 - 💇‍♀️ [Lazy-loading](#auto-importing--lazy-loading-translations) of translation messages
@@ -20,21 +20,21 @@ This module's intention is not to provide a full-blown solution for internationa
 
 ```bash
 # pnpm
-pnpm add -D @leanera/nuxt-i18n
+pnpm add -D @byjohann/nuxt-i18n
 
 # npm
-npm i -D @leanera/nuxt-i18n
+npm i -D @byjohann/nuxt-i18n
 ```
 
 ## Basic Usage
 
 > [📖 Check out the playground](./playground/)
 
-Add `@leanera/nuxt-i18n` to your `nuxt.confg.ts`:
+Add `@byjohann/nuxt-i18n` to your `nuxt.confg.ts`:
 
 ```ts
 export default defineNuxtConfig({
-  modules: ['@leanera/nuxt-i18n'],
+  modules: ['@byjohann/nuxt-i18n'],
 })
 ```
 
@@ -42,7 +42,7 @@ For the most basic setup, add the `locales` and `defaultLocales` module options 
 
 ```ts
 export default defineNuxtConfig({
-  modules: ['@leanera/nuxt-i18n'],
+  modules: ['@byjohann/nuxt-i18n'],
 
   i18n: {
     locales: ['en', 'de'],
@@ -255,7 +255,7 @@ export default defineNuxtConfig({
 })
 ```
 
-The locale messages defined above will be passed as the `messages` option when initializing `@leanera/vue-i18n` with `createI18n()`.
+The locale messages defined above will be passed as the `messages` option when initializing `@byjohann/vue-i18n` with `createI18n()`.
 
 ## API
 
@@ -465,4 +465,6 @@ await useLazyLocaleSwitch('en')
 
 ## License
 
-[MIT](./LICENSE) License © 2022-2023 [Johann Schopplich](https://github.com/johannschopplich) & [LeanERA GmbH](https://github.com/leanera)
+[MIT](./LICENSE) License © 2022-PRESENT [Johann Schopplich](https://github.com/johannschopplich)
+
+[MIT](./LICENSE) License © 2022-2023 [LeanERA GmbH](https://github.com/leanera)

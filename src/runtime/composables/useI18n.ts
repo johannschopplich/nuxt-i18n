@@ -1,4 +1,4 @@
-import type { UseI18n } from '@leanera/vue-i18n'
+import type { UseI18n } from '@byjohann/vue-i18n'
 import { useNuxtApp } from '#imports'
 
 export function useI18n() {

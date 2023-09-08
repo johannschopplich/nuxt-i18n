@@ -1,17 +1,17 @@
 {
-  "name": "@leanera/nuxt-i18n",
+  "name": "@byjohann/nuxt-i18n",
   "type": "module",
   "version": "0.5.1",
   "packageManager": "pnpm@8.7.4",
-  "description": "Nuxt 3 module for internationalization w/ locale auto-imports & localized routing",
-  "author": "LeanERA GmbH <https://github.com/leanera>",
+  "description": "Minimal module for i18n with locale auto-imports & localized routing",
+  "author": "Johann Schopplich <pkg@johannschopplich.com>",
   "license": "MIT",
-  "homepage": "https://github.com/leanera/nuxt-i18n#readme",
+  "homepage": "https://github.com/johannschopplich/nuxt-i18n#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leanera/nuxt-i18n.git"
+    "url": "git+https://github.com/johannschopplich/nuxt-i18n.git"
   },
-  "bugs": "https://github.com/leanera/nuxt-i18n/issues",
+  "bugs": "https://github.com/johannschopplich/nuxt-i18n/issues",
   "keywords": [
     "nuxt",
     "nuxt3",
@@ -42,14 +42,14 @@
     "prepack": "nuxt-module-build"
   },
   "dependencies": {
-    "@leanera/vue-i18n": "^0.5.0",
+    "@byjohann/vue-i18n": "^1.0.1",
     "@nuxt/kit": "^3.7.1",
     "knitwork": "^1.0.0",
     "pathe": "^1.1.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.41.0",
-    "@leanera/nuxt-i18n": "workspace:*",
+    "@byjohann/nuxt-i18n": "workspace:*",
     "@nuxt/module-builder": "^0.5.1",
     "@nuxt/test-utils": "^3.7.1",
     "@types/node": "^20.5.9",

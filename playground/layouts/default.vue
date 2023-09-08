@@ -23,7 +23,7 @@ watch(localeSelect, async (newLocale) => {
 
 <template>
   <header>
-    <h2>@leanera/nuxt-i18n</h2>
+    <h2>@byjohann/nuxt-i18n</h2>
 
     <NuxtLink :to=" `/${locale}`">
       {{ t('menu.home') }}

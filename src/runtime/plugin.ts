@@ -1,4 +1,4 @@
-import { createI18n } from '@leanera/vue-i18n'
+import { createI18n } from '@byjohann/vue-i18n'
 import { getLocaleFromRoute, loadLocale } from './utils'
 import { addRouteMiddleware, defineNuxtPlugin, useRoute } from '#imports'
 import { localeMessages, options } from '#build/i18n.options'

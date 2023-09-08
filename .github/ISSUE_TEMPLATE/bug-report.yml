@@ -1,5 +1,5 @@
 name: 🐞 Bug report
-description: Create a report to help us improve @leanera/nuxt-i18n
+description: Create a report to help us improve @byjohann/nuxt-i18n
 labels: [pending triage]
 body:
   - type: markdown

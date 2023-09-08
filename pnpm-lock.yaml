@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      '@leanera/vue-i18n':
-        specifier: ^0.5.0
-        version: 0.5.0(vue@3.3.4)
+      '@byjohann/vue-i18n':
+        specifier: ^1.0.1
+        version: 1.0.1(vue@3.3.4)
       '@nuxt/kit':
         specifier: ^3.7.1
         version: 3.7.1(rollup@3.29.0)
@@ -24,7 +24,7 @@ importers:
       '@antfu/eslint-config':
         specifier: ^0.41.0
         version: 0.41.0(eslint@8.48.0)(typescript@5.2.2)
-      '@leanera/nuxt-i18n':
+      '@byjohann/nuxt-i18n':
         specifier: workspace:*
         version: 'link:'
       '@nuxt/module-builder':
@@ -437,6 +437,15 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.15
       to-fast-properties: 2.0.0
+
+  /@byjohann/vue-i18n@1.0.1(vue@3.3.4):
+    resolution: {integrity: sha512-Hb2sHKypZ5hDl2LbJnzZbGhDShct+0FEMI98pWHNWaOKr+JoJw0I8TzbbkBxX+KtJbPtGXVuqlZo9Gt9h14e4w==}
+    peerDependencies:
+      vue: ^3
+    dependencies:
+      klona: 2.0.6
+      vue: 3.3.4
+    dev: false
 
   /@cloudflare/kv-asset-handler@0.3.0:
     resolution: {integrity: sha512-9CB/MKf/wdvbfkUdfrj+OkEwZ5b7rws0eogJ4293h+7b6KX5toPwym+VQKmILafNB9YiehqY0DlNrDcDhdWHSQ==}
@@ -950,15 +959,6 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@leanera/vue-i18n@0.5.0(vue@3.3.4):
-    resolution: {integrity: sha512-2Vww6cgibXj0ZKu+Eb7ZGMV/w3j8itkJv+9ai7GkHltUC5X+bQYaBYIJp0dNqHujqLgkZXxWSrDHeGqtt0eWBg==}
-    peerDependencies:
-      vue: ^3
-    dependencies:
-      klona: 2.0.6
-      vue: 3.3.4
-    dev: false
-
   /@mapbox/node-pre-gyp@1.0.11:
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
@@ -1297,6 +1297,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     dev: true
     bundledDependencies:
       - napi-wasm
@@ -4439,6 +4440,10 @@ packages:
     resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
+    dev: true
+
+  /napi-wasm@1.1.0:
+    resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
     dev: true
 
   /natural-compare@1.4.0:
