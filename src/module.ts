@@ -1,6 +1,6 @@
 import { resolve as pathResolve } from 'pathe'
 import { genDynamicImport, genImport, genSafeVariableName } from 'knitwork'
-import { addImportsDir, addPluginTemplate, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
+import { addImports, addPluginTemplate, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import type { LocaleMessages } from '@leanera/vue-i18n'
 import { DEFAULT_LOCALE, DEFAULT_LOCALE_ROUTE_NAME_SUFFIX, DEFAULT_ROUTES_NAME_SEPARATOR } from './constants'
 import { resolveLocales } from './locales'
@@ -193,7 +193,18 @@ export default defineNuxtModule<ModuleOptions>({
     addPluginTemplate(resolve('runtime/plugin'))
 
     // Add i18n composables
-    addImportsDir(resolve('runtime/composables'))
+    addImports([
+      ...[
+        'useI18n',
+        'useLazyLocaleSwitch',
+        'useLocalizedPath',
+        'useRouteLocale',
+      ].map(name => ({
+        name,
+        as: name,
+        from: resolve('runtime/composables'),
+      })),
+    ])
 
     // Load options template
     addTemplate({
