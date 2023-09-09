@@ -4,7 +4,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@byjohann/nuxt-i18n?color=a1b858&label=)](https://www.npmjs.com/package/@byjohann/nuxt-i18n)
 
-> [Nuxt 3](https://nuxt.com) module for internationalization with locale auto-imports & localized routing.
+> [Nuxt](https://nuxt.com) module for internationalization with locale auto-imports & localized routing.
 
 This module's intention is not to provide a full-blown solution for internationalization like [@nuxtjs/i18n](https://i18n.nuxtjs.org/), but offer a lean, effective and lightweight set of tools to cover your needs without the bloat of a full-blown solution.
 
