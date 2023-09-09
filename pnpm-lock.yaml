@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@byjohann/vue-i18n':
-        specifier: ^1.0.1
-        version: 1.0.1(vue@3.3.4)
+        specifier: ^1.0.2
+        version: 1.0.2(vue@3.3.4)
       '@nuxt/kit':
         specifier: ^3.7.1
         version: 3.7.1(rollup@3.29.0)
@@ -438,12 +438,11 @@ packages:
       '@babel/helper-validator-identifier': 7.22.15
       to-fast-properties: 2.0.0
 
-  /@byjohann/vue-i18n@1.0.1(vue@3.3.4):
-    resolution: {integrity: sha512-Hb2sHKypZ5hDl2LbJnzZbGhDShct+0FEMI98pWHNWaOKr+JoJw0I8TzbbkBxX+KtJbPtGXVuqlZo9Gt9h14e4w==}
+  /@byjohann/vue-i18n@1.0.2(vue@3.3.4):
+    resolution: {integrity: sha512-6D22w1apf0q81a7H5jK8AqzsNDl5VxI3J9dhhzFAXQuPootH2pBXIwiom+lGbZQH4z0RSQuNFsowNRwAlpRG1A==}
     peerDependencies:
       vue: ^3
     dependencies:
-      klona: 2.0.6
       vue: 3.3.4
     dev: false
 
@@ -4095,6 +4094,7 @@ packages:
   /klona@2.0.6:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
+    dev: true
 
   /knitwork@1.0.0:
     resolution: {integrity: sha512-dWl0Dbjm6Xm+kDxhPQJsCBTxrJzuGl0aP9rhr+TG8D3l+GL90N8O8lYUi7dTSAN2uuDqCtNgb6aEuQH5wsiV8Q==}

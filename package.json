@@ -42,7 +42,7 @@
     "prepack": "nuxt-module-build"
   },
   "dependencies": {
-    "@byjohann/vue-i18n": "^1.0.1",
+    "@byjohann/vue-i18n": "^1.0.2",
     "@nuxt/kit": "^3.7.1",
     "knitwork": "^1.0.0",
     "pathe": "^1.1.1"
