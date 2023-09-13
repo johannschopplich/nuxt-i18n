@@ -1,4 +1,4 @@
-import { resolve as pathResolve } from 'pathe'
+import { join } from 'pathe'
 import { genDynamicImport, genImport, genSafeVariableName } from 'knitwork'
 import { addImports, addPluginTemplate, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import type { LocaleMessages } from '@byjohann/vue-i18n'
@@ -153,7 +153,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   async setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
-    const langPath = (options.langImports && options.langDir) ? pathResolve(nuxt.options.srcDir, options.langDir!) : undefined
+    const langPath = (options.langImports && options.langDir) ? join(nuxt.options.srcDir, options.langDir!) : undefined
     const localeInfo = langPath ? await resolveLocales(langPath) : []
 
     if (!options.defaultLocale) {
