@@ -71,7 +71,7 @@ export interface ModuleOptions {
    *
    * @default {}
    */
-  messages?: LocaleMessages
+  messages?: LocaleMessages<string>
 
   /**
    * Routes strategy
