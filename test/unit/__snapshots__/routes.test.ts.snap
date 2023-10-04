@@ -1,18 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`localizeRoutes > Route optiosn resolver: routing disable > should be disabled routing 1`] = `
-[
-  {
-    "name": "home",
-    "path": "/",
-  },
-  {
-    "name": "about",
-    "path": "/about",
-  },
-]
-`;
-
 exports[`localizeRoutes > basic > should be localized routing 1`] = `
 [
   {
@@ -84,6 +71,19 @@ exports[`localizeRoutes > route name separator > should be localized routing 1`]
   {
     "name": "about__ja",
     "path": "/ja/about",
+  },
+]
+`;
+
+exports[`localizeRoutes > route option resolver: routing disable > should be disabled routing 1`] = `
+[
+  {
+    "name": "home",
+    "path": "/",
+  },
+  {
+    "name": "about",
+    "path": "/about",
   },
 ]
 `;
