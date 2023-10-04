@@ -34,7 +34,7 @@ Add `@byjohann/nuxt-i18n` to your `nuxt.confg.ts`:
 
 ```ts
 export default defineNuxtConfig({
-  modules: ['@byjohann/nuxt-i18n'],
+  modules: ['@byjohann/nuxt-i18n']
 })
 ```
 
