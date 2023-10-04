@@ -461,7 +461,6 @@ await useLazyLocaleSwitch('en')
 
 ## Credits
 
-- [Maronbeere](https://maronbeere.carrd.co) for his pixel logo art.
 - [Kazuya Kawaguchi](https://github.com/kazupon) for his work on [@intlify](https://github.com/intlify)'s [vue-i18n-next](https://github.com/intlify/vue-i18n-next), the next v8 alpha of [nuxt-i18n](https://github.com/kazupon/nuxt-i18n) as well as the i18n routing library [vue-i18n-routing](https://github.com/intlify/routing)
 
 ## License
