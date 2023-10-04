@@ -238,7 +238,7 @@ describe('localizeRoutes', () => {
     })
   })
 
-  describe('Route optiosn resolver: routing disable', () => {
+  describe('route option resolver: routing disable', () => {
     it('should be disabled routing', () => {
       const routes: NuxtPage[] = [
         {

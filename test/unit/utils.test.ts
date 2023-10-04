@@ -18,7 +18,7 @@ describe('adjustRouteDefinitionForTrailingSlash', () => {
       })
     })
 
-    describe('trailingSlash: false, isChildWithRelativePath: false', () => {
+    describe('trailingSlash: true, isChildWithRelativePath: false', () => {
       it('should be trailed with slash: /foo/bar/', () => {
         assert.equal(adjustRoutePathForTrailingSlash('/foo/bar', true, false), '/foo/bar/')
       })
