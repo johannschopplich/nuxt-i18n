@@ -10,7 +10,7 @@ This module's intention is not to provide a full-blown solution for internationa
 
 ## Key Features
 
-- 🪡 Integration with [@byjohann/vue-i18n](https://github.com/byjohann/vue-i18n)
+- 🪡 Integration with [@byjohann/vue-i18n](https://github.com/johannschopplich/vue-i18n)
 - 🗜 Composable usage with [`useI18n`](#usei18n)
 - 🪢 [Auto-importable](#auto-importing--lazy-loading-translations) locale messages (JSON/YAML support)
 - 💇‍♀️ [Lazy-loading](#auto-importing--lazy-loading-translations) of translation messages
