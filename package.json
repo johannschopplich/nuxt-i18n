@@ -39,7 +39,7 @@
     "test:types": "tsc --noEmit",
     "release": "bumpp --commit --push --tag",
     "prepare": "nuxi prepare playground",
-    "prepack": "nuxt-module-build"
+    "prepack": "nuxt-module-build build"
   },
   "dependencies": {
     "@byjohann/vue-i18n": "^1.1.5",

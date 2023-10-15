@@ -115,7 +115,8 @@ This would result in the following routes being generated for the `prefix_except
 
 </details>
 
-> ℹ️ Note: Routes for the English version don't have a prefix because it is the default language.
+> [!NOTE]
+> Routes for the English version don't have a prefix because it is the default language.
 
 #### Available Strategies
 
@@ -188,7 +189,8 @@ export default defineNuxtConfig({
 })
 ```
 
-> ℹ️ Each key within the pages object should correspond to the relative file-based path (excluding the `.vue` file extension) of the route within your `pages` directory.
+> [!NOTE]
+> Each key within the pages object should correspond to the relative file-based path (excluding the `.vue` file extension) of the route within your `pages` directory.
 
 Customized route paths must start with a `/` and not include the locale prefix.
 
@@ -205,7 +207,8 @@ How to enable file-based translations with or without lazy-loading:
 - Optionally, configure the `langDir` option to a directory that contains your translation files. Defaults to `locales`.
 - Make sure the `locales` option covers possible languages.
 
-> ℹ️ Translation files must be called the same as their locale. Currently, JSON, JSON5 and YAML are supported.
+> [!NOTE]
+> Translation files must be called the same as their locale. Currently, JSON, JSON5 and YAML are supported.
 
 Example files structure:
 
@@ -230,9 +233,11 @@ export default defineNuxtConfig({
 })
 ```
 
-> ℹ️ If you prefer to import file-based translations but don't want to dynamically import them, omit the `lazy` module option, as it defaults to `false`.
+> [!NOTE]
+> If you prefer to import file-based translations but don't want to dynamically import them, omit the `lazy` module option, as it defaults to `false`.
 
-> ⚠️ The global route middleware to lazy-load translations when switching locales won't run when the `no_prefix` strategy is chosen. Use the `useLazyLocaleSwitch` composable for changing the language, it will load the corresponding translations beforehand.
+> [!WARNING]
+> The global route middleware to lazy-load translations when switching locales won't run when the `no_prefix` strategy is chosen. Use the `useLazyLocaleSwitch` composable for changing the language, it will load the corresponding translations beforehand.
 
 ### Manual Translations
 
