@@ -1,6 +1,5 @@
-import { genImport } from 'knitwork'
-import { addPluginTemplate, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
-import { DEFAULT_LOCALE, DEFAULT_ROUTES_NAME_SEPARATOR } from './constants'
+import { genTypeImport } from 'knitwork'
+import { addPlugin, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import { setupPages } from './pages'
 import { logger } from './utils'
 
@@ -42,29 +41,6 @@ export interface ModuleOptions {
    * @default {}
    */
   pages?: Record<string, Record<string, string>>
-
-  /**
-   * Custom route overrides for the generated routes
-   *
-   * @example
-   * routeOverrides: {
-   *   // Use `en` catch-all page as fallback for non-existing pages
-   *   '/en/:id(.*)*': '/:id(.*)*'
-   * }
-   *
-   * @default {}
-   */
-  routeOverrides?: Record<string, string>
-
-  /**
-   * Print verbose debug information to the console during development mode
-   *
-   * @remarks
-   * For example the list of localized routes (if enabled)
-   *
-   * @default false
-   */
-  logs?: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -77,11 +53,9 @@ export default defineNuxtModule<ModuleOptions>({
     },
   },
   defaults: {
-    defaultLocale: DEFAULT_LOCALE,
+    defaultLocale: '',
     locales: [],
     pages: {},
-    routeOverrides: {},
-    logs: false,
   },
   async setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -103,28 +77,21 @@ export default defineNuxtModule<ModuleOptions>({
     setupPages(options as Required<ModuleOptions>, nuxt)
 
     // Add i18n plugin
-    addPluginTemplate(resolve('runtime/plugin'))
+    addPlugin(resolve('runtime/plugin'))
 
     // Load options template
     addTemplate({
       filename: 'i18n.options.mjs',
-      getContents() {
-        return `
-export const DEFAULT_ROUTES_NAME_SEPARATOR = ${JSON.stringify(DEFAULT_ROUTES_NAME_SEPARATOR)};
-export const options = ${JSON.stringify(options, null, 2)};
-`.trimStart()
-      },
+      getContents: () =>
+        `export const options = ${JSON.stringify(options, null, 2)};`,
     })
 
     addTemplate({
       filename: 'i18n.options.d.ts',
-      getContents() {
-        return `
-${genImport(resolve('module'), ['ModuleOptions'])}
-export declare const DEFAULT_ROUTES_NAME_SEPARATOR: ${JSON.stringify(DEFAULT_ROUTES_NAME_SEPARATOR)};
-export declare const options: Required<ModuleOptions>;
-`.trimStart()
-      },
+      getContents: () => [
+        genTypeImport(resolve('module'), ['ModuleOptions']),
+        'export declare const options: Required<ModuleOptions>;',
+      ].join('\n'),
     })
   },
 })

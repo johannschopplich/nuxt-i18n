@@ -3,7 +3,7 @@ import type {
   RouteLocationNormalized,
   RouteLocationNormalizedLoaded,
 } from 'vue-router'
-import { DEFAULT_ROUTES_NAME_SEPARATOR, options } from '#build/i18n.options'
+import { options } from '#build/i18n.options'
 
 const isString = (val: unknown): val is string => typeof val === 'string'
 const isObject = (val: unknown): val is Record<any, any> =>
@@ -19,13 +19,10 @@ const getLocalesRegex = (localeCodes: string[]) =>
  */
 export function getLocaleFromRoute(
   route: string | RouteLocationNormalizedLoaded | RouteLocationNormalized,
-  {
-    localeCodes = options.locales,
-    routesNameSeparator = DEFAULT_ROUTES_NAME_SEPARATOR,
-  } = {},
+  { localeCodes = options.locales } = {},
 ): string {
   const localesPattern = `(${localeCodes.join('|')})`
-  const regexpName = new RegExp(`${routesNameSeparator}${localesPattern}$`, 'i')
+  const regexpName = new RegExp(`___${localesPattern}$`, 'i')
   const regexpPath = getLocalesRegex(localeCodes)
 
   // Extract from route name

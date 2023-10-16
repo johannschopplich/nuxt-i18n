@@ -1,9 +1,4 @@
 import type { NuxtPage } from '@nuxt/schema'
-import {
-  DEFAULT_LOCALE,
-  DEFAULT_ROUTES_NAME_SEPARATOR,
-  DEFAULT_TRAILING_SLASH,
-} from './constants'
 import { adjustRoutePathForTrailingSlash } from './utils'
 
 export interface ComputedRouteOptions {
@@ -93,9 +88,8 @@ export const DefaultLocalizeRoutesPrefixable = prefixable
 export function localizeRoutes(
   routes: NuxtPage[],
   {
-    defaultLocale = DEFAULT_LOCALE,
-    trailingSlash = DEFAULT_TRAILING_SLASH,
-    routesNameSeparator = DEFAULT_ROUTES_NAME_SEPARATOR,
+    defaultLocale = '',
+    trailingSlash = false,
     optionsResolver = undefined,
     localizeRoutesPrefixable = DefaultLocalizeRoutesPrefixable,
     locales = [],
@@ -150,7 +144,7 @@ export function localizeRoutes(
 
       // Make localized page name
       if (name)
-        localizedRoute.name = `${name}${routesNameSeparator}${locale}`
+        localizedRoute.name = `${name}___${locale}`
 
       // Generate localized children routes
       if (route.children) {

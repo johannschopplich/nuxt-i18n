@@ -3,7 +3,6 @@ import type { Nuxt } from '@nuxt/schema'
 import type { ModuleOptions } from './module'
 import { localizeRoutes } from './routes'
 import type { ComputedRouteOptions, RouteOptionsResolver } from './routes'
-import { logger } from './utils'
 
 export function setupPages(
   options: Required<ModuleOptions>,
@@ -37,13 +36,5 @@ export function setupPages(
     })
     pages.splice(0, pages.length)
     pages.unshift(...localizedPages)
-
-    for (const [key, value] of Object.entries(options.routeOverrides)) {
-      const page = pages.find(({ path }) => path === key)
-      if (page)
-        page.path = value
-      else
-        logger.error(`Couldn't find page for route override \`${key}\``)
-    }
   })
 }
