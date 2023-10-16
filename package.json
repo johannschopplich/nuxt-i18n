@@ -1,7 +1,7 @@
 {
   "name": "@brc-dd/nuxt-i18n",
   "type": "module",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "packageManager": "pnpm@8.9.2",
   "description": "Minimal module for i18n with locale auto-imports & localized routing",
   "author": "Johann Schopplich <pkg@johannschopplich.com>",
