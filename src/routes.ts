@@ -1,13 +1,10 @@
 import type { NuxtPage } from '@nuxt/schema'
 import {
   DEFAULT_LOCALE,
-  DEFAULT_LOCALE_ROUTE_NAME_SUFFIX,
   DEFAULT_ROUTES_NAME_SEPARATOR,
-  DEFAULT_STRATEGY,
   DEFAULT_TRAILING_SLASH,
 } from './constants'
 import { adjustRoutePathForTrailingSlash } from './utils'
-import type { Strategies } from './types'
 
 export interface ComputedRouteOptions {
   locales: readonly string[]
@@ -22,7 +19,6 @@ export type RouteOptionsResolver = (
 export interface LocalizeRoutesPrefixableOptions {
   currentLocale: string
   defaultLocale: string
-  strategy: Strategies
   isChild: boolean
   path: string
 }
@@ -45,20 +41,6 @@ export interface I18nRoutingLocalizationOptions {
    */
   locales?: string[]
   /**
-   * Routes strategy
-   *
-   * @remarks
-   * Can be set to one of the following:
-   *
-   * - `no_prefix`: routes won't have a locale prefix
-   * - `prefix_except_default`: locale prefix added for every locale except default
-   * - `prefix`: locale prefix added for every locale
-   * - `prefix_and_default`: locale prefix added for every locale and default
-   *
-   * @default 'prefix_except_default'
-   */
-  strategy?: Strategies
-  /**
    * Whether to use trailing slash
    *
    * @default false
@@ -70,12 +52,6 @@ export interface I18nRoutingLocalizationOptions {
    * @default '___'
    */
   routesNameSeparator?: string
-  /**
-   * Internal suffix added to generated route names for default locale
-   *
-   * @default 'default'
-   */
-  defaultLocaleRouteNameSuffix?: string
   /**
    * Whether to prefix the localize route path with the locale or not
    *
@@ -97,17 +73,13 @@ export interface I18nRoutingLocalizationOptions {
 }
 
 function prefixable(options: LocalizeRoutesPrefixableOptions): boolean {
-  const { currentLocale, defaultLocale, strategy, isChild, path } = options
+  const { currentLocale, defaultLocale, isChild, path } = options
 
   const isDefaultLocale = currentLocale === defaultLocale
   const isChildWithRelativePath = isChild && !path.startsWith('/')
 
-  // No need to add prefix if child's path is relative
-  return (
-    !isChildWithRelativePath
-    // Skip default locale if strategy is `prefix_except_default`
-    && !(isDefaultLocale && strategy === 'prefix_except_default')
-  )
+  // No need to add prefix if child's path is relative and current locale is default
+  return !isChildWithRelativePath && !isDefaultLocale
 }
 
 export const DefaultLocalizeRoutesPrefixable = prefixable
@@ -122,19 +94,13 @@ export function localizeRoutes(
   routes: NuxtPage[],
   {
     defaultLocale = DEFAULT_LOCALE,
-    strategy = DEFAULT_STRATEGY as Strategies,
     trailingSlash = DEFAULT_TRAILING_SLASH,
     routesNameSeparator = DEFAULT_ROUTES_NAME_SEPARATOR,
-    defaultLocaleRouteNameSuffix = DEFAULT_LOCALE_ROUTE_NAME_SUFFIX,
-    includeUprefixedFallback = false,
     optionsResolver = undefined,
     localizeRoutesPrefixable = DefaultLocalizeRoutesPrefixable,
     locales = [],
   }: I18nRoutingLocalizationOptions = {},
 ): NuxtPage[] {
-  if (strategy === 'no_prefix')
-    return routes
-
   function makeLocalizedRoutes(
     route: NuxtPage,
     allowedLocaleCodes: string[],
@@ -201,35 +167,6 @@ export function localizeRoutes(
       if (componentOptions.paths && componentOptions.paths[locale])
         path = componentOptions.paths[locale]
 
-      // For `prefix_and_default` strategy and default locale:
-      // - if it's a parent page, add it with default locale suffix added (no suffix if page has children)
-      // - if it's a child page of that extra parent page, append default suffix to it
-      const isDefaultLocale = locale === defaultLocale
-      if (isDefaultLocale && strategy === 'prefix_and_default') {
-        if (!isChild) {
-          const defaultRoute = { ...localizedRoute, path }
-
-          if (name)
-            defaultRoute.name = `${localizedRoute.name}${routesNameSeparator}${defaultLocaleRouteNameSuffix}`
-
-          if (route.children) {
-            // Recreate child routes with default suffix added
-            defaultRoute.children = []
-            for (const childRoute of route.children) {
-              // `isExtraPageTree` argument is true to indicate that this is extra route added for `prefix_and_default` strategy
-              defaultRoute.children.push(
-                ...makeLocalizedRoutes(childRoute, [locale], true, true),
-              )
-            }
-          }
-
-          _routes.push(defaultRoute)
-        }
-        else if (isChild && isExtraPageTree && name) {
-          localizedRoute.name += `${routesNameSeparator}${defaultLocaleRouteNameSuffix}`
-        }
-      }
-
       const isChildWithRelativePath = isChild && !path.startsWith('/')
 
       // Add route prefix
@@ -238,7 +175,6 @@ export function localizeRoutes(
         path,
         currentLocale: locale,
         defaultLocale,
-        strategy,
       })
       if (shouldAddPrefix)
         path = `/${locale}${path}`
@@ -250,9 +186,6 @@ export function localizeRoutes(
           isChildWithRelativePath,
         )
       }
-
-      if (shouldAddPrefix && isDefaultLocale && strategy === 'prefix' && includeUprefixedFallback)
-        _routes.push({ ...route })
 
       localizedRoute.path = path
       _routes.push(localizedRoute)

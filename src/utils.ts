@@ -1,7 +1,6 @@
 import { useLogger } from '@nuxt/kit'
-import type { Strategies } from './types'
 
-export const logger = useLogger('@byjohann/nuxt-i18n')
+export const logger = useLogger('nuxt-i18n')
 
 export function adjustRoutePathForTrailingSlash(
   pagePath: string,
@@ -22,22 +21,7 @@ export function getRouteName(routeName?: string | symbol | null) {
 export function getLocaleRouteName(
   routeName: string | null,
   locale: string,
-  {
-    defaultLocale,
-    strategy,
-    routesNameSeparator,
-    defaultLocaleRouteNameSuffix,
-  }: {
-    defaultLocale: string
-    strategy: Strategies
-    routesNameSeparator: string
-    defaultLocaleRouteNameSuffix: string
-  },
+  { routesNameSeparator }: { routesNameSeparator: string },
 ) {
-  let name = getRouteName(routeName) + (strategy === 'no_prefix' ? '' : routesNameSeparator + locale)
-
-  if (locale === defaultLocale && strategy === 'prefix_and_default')
-    name += routesNameSeparator + defaultLocaleRouteNameSuffix
-
-  return name
+  return getRouteName(routeName) + (routesNameSeparator + locale)
 }
