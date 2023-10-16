@@ -1,6 +1,6 @@
 import { genImport } from 'knitwork'
 import { addPluginTemplate, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
-import { DEFAULT_LOCALE, DEFAULT_LOCALE_ROUTE_NAME_SUFFIX, DEFAULT_ROUTES_NAME_SEPARATOR } from './constants'
+import { DEFAULT_LOCALE, DEFAULT_ROUTES_NAME_SEPARATOR } from './constants'
 import { setupPages } from './pages'
 import { logger } from './utils'
 
@@ -110,7 +110,6 @@ export default defineNuxtModule<ModuleOptions>({
       filename: 'i18n.options.mjs',
       getContents() {
         return `
-export const DEFAULT_LOCALE_ROUTE_NAME_SUFFIX = ${JSON.stringify(DEFAULT_LOCALE_ROUTE_NAME_SUFFIX)};
 export const DEFAULT_ROUTES_NAME_SEPARATOR = ${JSON.stringify(DEFAULT_ROUTES_NAME_SEPARATOR)};
 export const options = ${JSON.stringify(options, null, 2)};
 `.trimStart()
@@ -122,7 +121,6 @@ export const options = ${JSON.stringify(options, null, 2)};
       getContents() {
         return `
 ${genImport(resolve('module'), ['ModuleOptions'])}
-export declare const DEFAULT_LOCALE_ROUTE_NAME_SUFFIX: ${JSON.stringify(DEFAULT_LOCALE_ROUTE_NAME_SUFFIX)};
 export declare const DEFAULT_ROUTES_NAME_SEPARATOR: ${JSON.stringify(DEFAULT_ROUTES_NAME_SEPARATOR)};
 export declare const options: Required<ModuleOptions>;
 `.trimStart()

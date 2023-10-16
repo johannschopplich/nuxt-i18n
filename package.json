@@ -37,7 +37,7 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest",
     "test:types": "tsc --noEmit",
-    "release": "bumpp --commit --push --tag",
+    "release": "bumpp --commit --push --tag && npm publish --access public",
     "prepare": "nuxi prepare playground",
     "prepack": "nuxt-module-build build"
   },
