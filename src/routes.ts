@@ -102,7 +102,7 @@ export function localizeRoutes(
     isExtraPageTree = false,
   ): NuxtPage[] {
     // Skip route localization
-    if ((route.redirect && !route.file) || route.meta?.i18n === false)
+    if (route.redirect && !route.file)
       return [route]
 
     // Resolve with route (page) options
