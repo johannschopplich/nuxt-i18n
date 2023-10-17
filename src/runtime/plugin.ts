@@ -19,7 +19,7 @@ export default defineNuxtPlugin(async () => {
       if (to.path === '/' && !useCookie('i18n_redirected').value) {
         const headerLocale = (useRequestHeaders(['accept-language'])['accept-language'] || '')
           .split(',').map(l => clean(l.split(';')[0])).filter(l => options.locales.includes(l))[0]
-        const browserLocale = typeof navigator !== 'undefined'
+        const browserLocale = typeof document !== 'undefined'
           ? navigator.languages.map(clean).filter(l => options.locales.includes(l))[0]
             || (options.locales.includes(clean(navigator.language)) ? clean(navigator.language) : '')
           : ''

@@ -1,5 +1,5 @@
 import type { Lang } from '#build/i18n'
-import { type ComputedRef, computed, useCookie, useState } from '#imports'
+import { type ComputedRef, computed, useCookie, useRoute, useState } from '#imports'
 import { options } from '#build/i18n'
 
 export type { Lang }
@@ -30,10 +30,13 @@ export function useLocale<T>(
   const t = translations?.[locale.value]
 
   function setLocale(newLocale: Lang) {
+    const route = useRoute()
     if (locale.value === newLocale)
       return
     useCookie('i18n_redirected').value = newLocale
     locale.value = newLocale
+    if (typeof document !== 'undefined')
+      window.location.pathname = localizePath(route.path, newLocale)
   }
 
   function localizePath(path: string, targetLocale: Lang) {
