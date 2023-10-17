@@ -1,5 +1,12 @@
 import { genTypeImport } from 'knitwork'
-import { addImportsSources, addPlugin, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
+import {
+  addImportsSources,
+  addPlugin,
+  addTemplate,
+  addTypeTemplate,
+  createResolver,
+  defineNuxtModule,
+} from '@nuxt/kit'
 import { setupPages } from './pages'
 import { logger } from './utils'
 
@@ -98,6 +105,18 @@ export default defineNuxtModule<ModuleOptions>({
     addImportsSources({
       from: resolve('runtime/composables'),
       imports: ['useLocale'],
+    })
+
+    addTypeTemplate({
+      filename: 'i18n-global.d.ts',
+      getContents: () => [
+        `declare module "nuxt/dist/pages/runtime/composables" {`,
+        `  interface PageMeta {`,
+        `    i18n?: boolean`,
+        `  }`,
+        `}`,
+        `export {}`,
+      ].join('\n'),
     })
   },
 })
