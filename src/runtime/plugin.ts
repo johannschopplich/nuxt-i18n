@@ -12,12 +12,12 @@ import { options } from '#build/i18n'
 const clean = (str: string) => str.split('-')[0].trim().toLowerCase()
 
 export default defineNuxtPlugin({
-  name: 'i18n',
+  name: 'nuxt-i18n-plugin',
   enforce: 'pre',
   async setup() {
     // Add route middleware to load locale messages for the target route
     addRouteMiddleware(
-      'i18n-set-locale',
+      'nuxt-i18n-middleware',
       async (to) => {
         if (to.path === '/' && !useCookie('i18n_redirected').value) {
           const headerLocale = (
