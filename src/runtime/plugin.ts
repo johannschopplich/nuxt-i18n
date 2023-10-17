@@ -1,5 +1,11 @@
 import { getLocaleFromRoute } from './utils'
-import { addRouteMiddleware, defineNuxtPlugin, useRoute, useState } from '#imports'
+import {
+  addRouteMiddleware,
+  defineNuxtPlugin,
+  useCookie,
+  useRequestHeaders,
+  useState,
+} from '#imports'
 import { options } from '#build/i18n.options'
 
 const clean = (str: string) => str.split('-')[0].trim().toLowerCase()
