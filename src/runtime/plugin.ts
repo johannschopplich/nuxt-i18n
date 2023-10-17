@@ -25,7 +25,7 @@ export default defineNuxtPlugin(async () => {
           : ''
 
         const locale = headerLocale || browserLocale
-        if (locale)
+        if (locale && locale !== options.defaultLocale)
           return navigateTo(`/${locale}`)
       }
 
