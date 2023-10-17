@@ -1,5 +1,12 @@
 import type { Lang } from '#build/i18n'
-import { type ComputedRef, computed, useCookie, useRoute, useState } from '#imports'
+import {
+  type ComputedRef,
+  computed,
+  reloadNuxtApp,
+  useCookie,
+  useRoute,
+  useState,
+} from '#imports'
 import { options } from '#build/i18n'
 
 export type { Lang }
@@ -10,7 +17,10 @@ export type Translations<T> = {
 
 export interface Locale {
   locale: ComputedRef<Lang>
-  setLocale(locale: Lang): void
+  setLocale(
+    locale: Lang,
+    options?: { reload?: boolean; skipLocalization?: boolean }
+  ): void
   localizePath(path: string, locale: Lang): string
 }
 
@@ -29,14 +39,26 @@ export function useLocale<T>(
 
   const t = translations?.[locale.value]
 
-  function setLocale(newLocale: Lang) {
+  function setLocale(
+    newLocale: Lang,
+    { reload = true, skipLocalization = false } = {},
+  ) {
     const route = useRoute()
     if (locale.value === newLocale)
       return
     useCookie('i18n_redirected').value = newLocale
     locale.value = newLocale
-    if (typeof document !== 'undefined')
-      window.location.pathname = localizePath(route.path, newLocale)
+    if (reload) {
+      if (skipLocalization) {
+        reloadNuxtApp({ force: true })
+      }
+      else {
+        reloadNuxtApp({
+          path: localizePath(route.fullPath, newLocale),
+          force: true,
+        })
+      }
+    }
   }
 
   function localizePath(path: string, targetLocale: Lang) {
