@@ -2,6 +2,7 @@ import { getLocaleFromRoute } from './utils'
 import {
   addRouteMiddleware,
   defineNuxtPlugin,
+  navigateTo,
   useCookie,
   useRequestHeaders,
   useState,
