@@ -7,7 +7,7 @@ import {
   useRequestHeaders,
   useState,
 } from '#imports'
-import { options } from '#build/i18n.options'
+import { options } from '#build/i18n'
 
 const clean = (str: string) => str.split('-')[0].trim().toLowerCase()
 

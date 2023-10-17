@@ -3,7 +3,7 @@ import type {
   RouteLocationNormalized,
   RouteLocationNormalizedLoaded,
 } from 'vue-router'
-import { options } from '#build/i18n.options'
+import { options } from '#build/i18n'
 
 const isString = (val: unknown): val is string => typeof val === 'string'
 const isObject = (val: unknown): val is Record<any, any> =>

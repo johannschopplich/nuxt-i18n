@@ -1,5 +1,5 @@
 import { genTypeImport } from 'knitwork'
-import { addPlugin, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
+import { addImportsSources, addPlugin, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import { setupPages } from './pages'
 import { logger } from './utils'
 
@@ -81,17 +81,23 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Load options template
     addTemplate({
-      filename: 'i18n.options.mjs',
+      filename: 'i18n.mjs',
       getContents: () =>
         `export const options = ${JSON.stringify(options, null, 2)};`,
     })
 
     addTemplate({
-      filename: 'i18n.options.d.ts',
+      filename: 'i18n.d.ts',
       getContents: () => [
         genTypeImport(resolve('module'), ['ModuleOptions']),
         'export declare const options: Required<ModuleOptions>;',
+        `export type Lang = ${options.locales!.map(locale => `'${locale}'`).join(' | ')};`,
       ].join('\n'),
+    })
+
+    addImportsSources({
+      from: resolve('runtime/composables'),
+      imports: ['useLocale'],
     })
   },
 })
