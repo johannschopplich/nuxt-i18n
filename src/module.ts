@@ -96,7 +96,7 @@ export default defineNuxtModule<ModuleOptions>({
       filename: 'i18n.d.ts',
       getContents: () => [
         genTypeImport(resolve('module'), ['ModuleOptions']),
-        'export declare const options: Required<ModuleOptions>;',
+        'export declare const options: Required<ModuleOptions> & { locales: Lang[] };',
         `export type Lang = ${options.locales!.map(locale => `'${locale}'`).join(' | ')};`,
       ].join('\n'),
     })
