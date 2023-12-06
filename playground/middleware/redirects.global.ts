@@ -1,3 +1,5 @@
+import { defineNuxtRouteMiddleware, navigateTo, useI18n, useRequestHeaders } from '#imports'
+
 export default defineNuxtRouteMiddleware((to) => {
   const { defaultLocale } = useI18n()
 
