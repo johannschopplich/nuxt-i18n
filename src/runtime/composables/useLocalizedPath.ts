@@ -16,6 +16,3 @@ export function useLocalizedPath(path: string, locale: string): string {
       : `/${locale}`,
   )
 }
-
-/** @deprecated Use `useLocalizedPath` instead */
-export const useLocalePath = useLocalizedPath

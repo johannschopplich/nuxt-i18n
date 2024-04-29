@@ -12,7 +12,7 @@ export function adjustRoutePathForTrailingSlash(
   return pagePath.replace(/\/+$/, '') + (trailingSlash ? '/' : '') || (isChildWithRelativePath ? '' : '/')
 }
 
-export function getRouteName(routeName?: string | symbol | null) {
+export function getRouteName(routeName: string | symbol | null | undefined) {
   return typeof routeName === 'string'
     ? routeName
     : typeof routeName === 'symbol'
@@ -21,7 +21,7 @@ export function getRouteName(routeName?: string | symbol | null) {
 }
 
 export function getLocaleRouteName(
-  routeName: string | null,
+  routeName: symbol | string | null | undefined,
   locale: string,
   {
     defaultLocale,
