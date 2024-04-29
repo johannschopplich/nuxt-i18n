@@ -1,7 +1,8 @@
 import { useLogger } from '@nuxt/kit'
 import type { Strategies } from './types'
+import type { ConsolaInstance } from 'consola'
 
-export const logger = useLogger('@byjohann/nuxt-i18n')
+export const logger: ConsolaInstance = useLogger('@byjohann/nuxt-i18n')
 
 export function adjustRoutePathForTrailingSlash(
   pagePath: string,

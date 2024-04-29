@@ -1,4 +1,5 @@
 import { join } from 'pathe'
+import type { NuxtModule } from '@nuxt/schema'
 import { genDynamicImport, genImport, genSafeVariableName } from 'knitwork'
 import { addImports, addPluginTemplate, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import type { LocaleMessages } from '@byjohann/vue-i18n'
@@ -135,8 +136,7 @@ export default defineNuxtModule<ModuleOptions>({
     name: '@byjohann/nuxt-i18n',
     configKey: 'i18n',
     compatibility: {
-      nuxt: '^3',
-      bridge: false,
+      nuxt: '^3.7',
     },
   },
   defaults: {
@@ -240,4 +240,4 @@ export declare const localeMessages: Record<string, () => Promise<Record<string,
       },
     })
   },
-})
+}) as NuxtModule<ModuleOptions>
