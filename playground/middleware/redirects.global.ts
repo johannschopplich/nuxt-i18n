@@ -13,12 +13,12 @@ function useServerOrClientLocale() {
   let long: string | undefined
   let short: string | undefined
 
-  if (process.server) {
+  if (import.meta.server) {
     const headers = useRequestHeaders()
     long = headers['accept-language']
     short = long?.split(',')?.[0]?.slice(0, 2)
   }
-  else if (process.client) {
+  else if (import.meta.client) {
     long = navigator.language
     short = long.slice(0, 2)
   }

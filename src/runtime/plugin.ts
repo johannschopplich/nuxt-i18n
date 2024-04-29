@@ -11,7 +11,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   // Loads all locale messages if auto-import is enabled
   if (hasLocaleMessages) {
     // Import all locale messages for SSR or if `lazy` is disabled
-    if (process.server || !lazy) {
+    if (import.meta.server || !lazy) {
       await Promise.all(locales.map(locale => loadLocale(messages, locale)))
     }
     // Import default locale message for client
@@ -28,7 +28,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     defaultLocale,
     locales,
     messages,
-    ...(!process.dev && { logLevel: 'silent' }),
+    ...(!import.meta.dev && { logLevel: 'silent' }),
   })
 
   nuxtApp.vueApp.use(i18n)
@@ -38,7 +38,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     i18n.setLocale(currentLocale)
 
   // Add route middleware to load locale messages for the target route
-  if (process.client && hasLocaleMessages && lazy && strategy !== 'no_prefix') {
+  if (import.meta.client && hasLocaleMessages && lazy && strategy !== 'no_prefix') {
     addRouteMiddleware(
       'i18n-set-locale',
       async (to) => {

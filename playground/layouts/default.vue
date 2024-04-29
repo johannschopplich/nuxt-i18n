@@ -12,7 +12,6 @@ const routeMap: Record<string, Record<string, string>> = {
 
 watch(localeSelect, async (newLocale) => {
   const to = useLocalizedPath(route.fullPath, newLocale)
-  // eslint-disable-next-line no-console
   console.log(to)
 
   await navigateTo(
@@ -22,28 +21,37 @@ watch(localeSelect, async (newLocale) => {
 </script>
 
 <template>
-  <header>
-    <h2>@byjohann/nuxt-i18n</h2>
+  <div>
+    <header>
+      <h2>@byjohann/nuxt-i18n</h2>
 
-    <NuxtLink :to=" `/${locale}`">
-      {{ t('menu.home') }}
-    </NuxtLink>
-    /
-    <NuxtLink :to="`/${locale}${routeMap.about[locale]}`">
-      {{ t('menu.about') }}
-    </NuxtLink>
+      <NuxtLink :to=" `/${locale}`">
+        {{ t('menu.home') }}
+      </NuxtLink>
+      /
+      <NuxtLink :to="`/${locale}${routeMap.about[locale]}`">
+        {{ t('menu.about') }}
+      </NuxtLink>
 
-    <form>
-      <label for="locale-select">{{ t('language') }}:&nbsp;</label>
-      <select id="locale-select" v-model="localeSelect">
-        <option v-for="i in locales" :key="i" :value="i">
-          {{ i }}
-        </option>
-      </select>
-    </form>
-  </header>
+      <form>
+        <label for="locale-select">{{ t('language') }}:&nbsp;</label>
+        <select
+          id="locale-select"
+          v-model="localeSelect"
+        >
+          <option
+            v-for="i in locales"
+            :key="i"
+            :value="i"
+          >
+            {{ i }}
+          </option>
+        </select>
+      </form>
+    </header>
 
-  <main>
-    <slot />
-  </main>
+    <main>
+      <slot />
+    </main>
+  </div>
 </template>

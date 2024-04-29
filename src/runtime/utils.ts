@@ -1,4 +1,4 @@
-/* eslint-disable antfu/top-level-function */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type {
   RouteLocationNormalized,
   RouteLocationNormalizedLoaded,
@@ -14,8 +14,7 @@ const CONSOLE_PREFIX = '[nuxt-i18n]'
 const loadedLocales = new Set<string>()
 
 const isString = (val: unknown): val is string => typeof val === 'string'
-const isObject = (val: unknown): val is Record<any, any> =>
-  val !== null && typeof val === 'object'
+const isObject = (val: unknown): val is Record<string, any> => val !== null && typeof val === 'object'
 
 const getLocalesRegex = (localeCodes: string[]) =>
   new RegExp(`^/(${localeCodes.join('|')})(?:/|$)`, 'i')

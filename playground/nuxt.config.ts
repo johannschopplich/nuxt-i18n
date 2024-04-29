@@ -18,12 +18,4 @@ export default defineNuxtConfig({
     },
     logs: true,
   },
-
-  experimental: {
-    typescriptBundlerResolution: true,
-  },
-
-  typescript: {
-    shim: false,
-  },
 })
