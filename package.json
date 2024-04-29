@@ -1,7 +1,7 @@
 {
   "name": "@byjohann/nuxt-i18n",
   "type": "module",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "packageManager": "pnpm@9.0.6",
   "description": "Minimal module for i18n with locale auto-imports & localized routing",
   "author": "Johann Schopplich <hello@johannschopplich.com>",
