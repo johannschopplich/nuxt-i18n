@@ -1,7 +1,7 @@
 {
   "name": "@byjohann/nuxt-i18n",
   "type": "module",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "packageManager": "pnpm@9.0.6",
   "description": "Minimal module for i18n with locale auto-imports & localized routing",
   "author": "Johann Schopplich <hello@johannschopplich.com>",
@@ -37,7 +37,7 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest",
     "test:types": "tsc --noEmit",
-    "release": "bumpp --commit --push --tag"
+    "release": "bumpp"
   },
   "dependencies": {
     "@byjohann/vue-i18n": "^1.2.1",
