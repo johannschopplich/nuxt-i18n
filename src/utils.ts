@@ -1,6 +1,6 @@
 import { useLogger } from '@nuxt/kit'
-import type { Strategies } from './types'
 import type { ConsolaInstance } from 'consola'
+import type { Strategies } from './types'
 
 export const logger: ConsolaInstance = useLogger('@byjohann/nuxt-i18n')
 

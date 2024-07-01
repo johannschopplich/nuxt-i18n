@@ -1,9 +1,10 @@
 import { createI18n } from '@byjohann/vue-i18n'
 import { getLocaleFromRoute, loadLocale } from './utils'
 import { addRouteMiddleware, defineNuxtPlugin, useRoute } from '#imports'
+import type { Plugin } from '#app'
 import { localeMessages, options } from '#build/i18n.options'
 
-export default defineNuxtPlugin(async (nuxtApp) => {
+const plugin: Plugin = defineNuxtPlugin(async (nuxtApp) => {
   const { defaultLocale, lazy, locales, messages, strategy } = options
   const hasLocaleMessages = Object.keys(localeMessages).length > 0
   const currentLocale = getLocaleFromRoute(useRoute())
@@ -58,3 +59,5 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     },
   }
 })
+
+export default plugin
