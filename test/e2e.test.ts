@@ -10,43 +10,43 @@ describe('nuxt-i18n', async () => {
   })
 
   it('renders message for default locale', async () => {
-    const html = await $fetch('/en/test')
+    const html = await $fetch<string>('/en/test')
     const content = getTestResult(html)
     expect(content).toMatchSnapshot()
   })
 
   it('renders message for "de"', async () => {
-    const html = await $fetch('/de/test')
+    const html = await $fetch<string>('/de/test')
     const content = getTestResult(html)
     expect(content).toMatchSnapshot()
   })
 
   it('builds routes tree', async () => {
-    const html = await $fetch('/en/test/routes')
+    const html = await $fetch<string>('/en/test/routes')
     const content = getTestResult(html)
     expect(content).toMatchSnapshot()
   })
 
   it('returns composables data for default locale', async () => {
-    const html = await $fetch('/en/test/composables')
+    const html = await $fetch<string>('/en/test/composables')
     const content = getTestResult(html)
     expect(content).toMatchSnapshot()
   })
 
   it('returns composables data for "de"', async () => {
-    const html = await $fetch('/de/test/composables')
+    const html = await $fetch<string>('/de/test/composables')
     const content = getTestResult(html)
     expect(content).toMatchSnapshot()
   })
 
   it('contains i18n data', async () => {
-    const html = await $fetch('/en/test/i18n')
+    const html = await $fetch<string>('/en/test/i18n')
     const content = getTestResult(html)
     expect(content).toMatchSnapshot()
   })
 
   it('renders the error page', async () => {
-    const html = await $fetch('/not-found')
+    const html = await $fetch<string>('/not-found')
     expect(html).toMatch(/<h1.*?>Error<\/h1>/)
   })
 })
