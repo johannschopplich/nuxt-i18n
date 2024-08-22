@@ -2,7 +2,7 @@
   "name": "@byjohann/nuxt-i18n",
   "type": "module",
   "version": "1.0.7",
-  "packageManager": "pnpm@9.4.0",
+  "packageManager": "pnpm@9.8.0",
   "description": "Minimal module for i18n with locale auto-imports & localized routing",
   "author": "Johann Schopplich <hello@johannschopplich.com>",
   "license": "MIT",
@@ -41,20 +41,20 @@
   },
   "dependencies": {
     "@byjohann/vue-i18n": "^1.3.0",
-    "@nuxt/kit": "^3.12.2",
+    "@nuxt/kit": "^3.13.0",
     "knitwork": "^1.1.0",
     "pathe": "^1.1.2"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.3.13",
-    "@nuxt/module-builder": "^0.8.1",
-    "@nuxt/test-utils": "^3.13.1",
-    "@types/node": "^20.14.9",
-    "bumpp": "^9.4.1",
-    "eslint": "^9.6.0",
-    "nuxt": "^3.12.2",
-    "typescript": "^5.4.5",
-    "vitest": "^1.6.0",
-    "vue-tsc": "^2.0.24"
+    "@nuxt/eslint-config": "^0.5.2",
+    "@nuxt/module-builder": "^0.8.3",
+    "@nuxt/test-utils": "^3.14.1",
+    "@types/node": "^20.16.1",
+    "bumpp": "^9.5.2",
+    "eslint": "^9.9.0",
+    "nuxt": "^3.13.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5",
+    "vue-tsc": "^2.0.29"
   }
 }

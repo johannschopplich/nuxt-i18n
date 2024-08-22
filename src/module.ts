@@ -212,16 +212,16 @@ export default defineNuxtModule<ModuleOptions>({
 export const DEFAULT_LOCALE_ROUTE_NAME_SUFFIX = ${JSON.stringify(DEFAULT_LOCALE_ROUTE_NAME_SUFFIX)};
 export const DEFAULT_ROUTES_NAME_SEPARATOR = ${JSON.stringify(DEFAULT_ROUTES_NAME_SEPARATOR)};
 ${[...syncLocaleFiles]
-  .map(({ code, path }) => genImport(path, genSafeVariableName(`locale_${code}`)))
-  .join('\n')}
+    .map(({ code, path }) => genImport(path, genSafeVariableName(`locale_${code}`)))
+    .join('\n')}
 export const options = ${JSON.stringify(options, null, 2)};
 export const localeMessages = {
 ${[...syncLocaleFiles]
-  .map(({ code }) => `  ${JSON.stringify(code)}: () => Promise.resolve(${genSafeVariableName(`locale_${code}`)}),`)
-  .join('\n')}
+    .map(({ code }) => `  ${JSON.stringify(code)}: () => Promise.resolve(${genSafeVariableName(`locale_${code}`)}),`)
+    .join('\n')}
 ${[...asyncLocaleFiles]
-  .map(({ code, path }) => `  ${JSON.stringify(code)}: ${genDynamicImport(path)},`)
-  .join('\n')}
+    .map(({ code, path }) => `  ${JSON.stringify(code)}: ${genDynamicImport(path)},`)
+    .join('\n')}
 };
 `.trimStart()
       },
