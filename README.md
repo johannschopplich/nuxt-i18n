@@ -396,15 +396,18 @@ interface ModuleOptions {
 Gives access to the current i18n instance.
 
 ```ts
-function useI18n(): UseI18n
+function useI18n<const Locale extends string = string>(): I18nInstance<Locale>
 
-interface UseI18n {
-  defaultLocale: string
-  locale: ComputedRef<string>
-  locales: readonly string[]
-  messages: LocaleMessages
-  t: (key: string, params?: Record<string, any>) => string
-  setLocale: (locale: string) => void
+interface interface I18nInstance<
+  Locale extends string = string,
+  Messages extends Record<string, unknown> = Record<string, unknown>,
+> {
+  defaultLocale: Locale
+  locale: ComputedRef<Locale>
+  locales: readonly Locale[]
+  messages: LocaleMessages<Locale, Messages>
+  t: <const T>(key: T, params?: MessageParameters) => string
+  setLocale: (locale: Locale) => void
   getLocale: () => string
 }
 ```
