@@ -25,13 +25,15 @@ watch(localeSelect, async (newLocale) => {
     <header>
       <h2>@byjohann/nuxt-i18n</h2>
 
-      <NuxtLink :to="`/${locale}`">
-        {{ t('menu.home') }}
-      </NuxtLink>
-      /
-      <NuxtLink :to="`/${locale}${routeMap.about[locale]}`">
-        {{ t('menu.about') }}
-      </NuxtLink>
+      <nav>
+        <NuxtLink :to="`/${locale}`">
+          {{ t('menu.home') }}
+        </NuxtLink>
+        /
+        <NuxtLink :to="`/${locale}${routeMap.about[locale]}`">
+          {{ t('menu.about') }}
+        </NuxtLink>
+      </nav>
 
       <form>
         <label for="locale-select">{{ t('language') }}:&nbsp;</label>
